@@ -1,4 +1,4 @@
-# Mise à niveau Creative Coding 2024
+# Mise à niveau Creative Coding 2025
 
 ## Exercices P5 / Creative Coding
 

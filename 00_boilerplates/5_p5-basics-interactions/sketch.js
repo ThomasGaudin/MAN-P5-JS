@@ -7,7 +7,7 @@ const circle = {
   color: "black",
 };
 
-const allCicrles = [];
+const allCircles = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -31,21 +31,22 @@ function initCircle() {
         y: sizeCell.y * j + circle.diameter / 2 + margin.y / 2,
       };
 
-      const instanceCicle = new Circle(position, circle.diameter, circle.color);
+      let instanceCircle = new Circle(position, circle.diameter, circle.color);
 
-      instanceCicle.setup();
-      allCicrles.push(instanceCicle);
+      instanceCircle.setup();
+      allCircles.push(instanceCircle);
+      console.log(allCircles);
     }
   }
 }
 
 function mousePressed() {
   let isOverBall = false;
-  for (let i = 0; i < allCicrles.length; i++) {
-    const pos = allCicrles[i].getPosition();
+  for (let i = 0; i < allCircles.length; i++) {
+    const pos = allCircles[i].getPosition();
     if (dist(mouseX, mouseY, pos.x, pos.y) < circle.diameter / 2) {
       isOverBall = true;
-      allCicrles.splice(i, 1);
+      allCircles.splice(i, 1);
     }
   }
   if (!isOverBall) {
@@ -55,13 +56,13 @@ function mousePressed() {
 }
 
 function addCircle() {
-  const instanceCicle = new Circle(
+  const instanceCircle = new Circle(
     { x: mouseX, y: mouseY },
     circle.diameter,
     "rgb(0,255,0)"
   );
-  instanceCicle.setup();
-  allCicrles.push(instanceCicle);
+  instanceCircle.setup();
+  allCircles.push(instanceCircle);
 }
 
 function draw() {
@@ -74,9 +75,9 @@ function draw() {
 
   // Adding another level of loop to create a grid
 
-  for (let i = 0; i < allCicrles.length; i++) {
-    allCicrles[i].update();
-    allCicrles[i].draw();
+  for (let i = 0; i < allCircles.length; i++) {
+    allCircles[i].update();
+    allCircles[i].draw();
   }
 }
 
